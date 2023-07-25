@@ -15,7 +15,7 @@ const postsSlice = createSlice({
 			state.loading = true;
 		},
 		setAllPosts: (state, { payload }) => {
-			state.posts.push(...payload);
+			state.posts = payload;
 			state.loading = false;
 		},
 	},
