@@ -7,6 +7,7 @@ export type Post = {
 
 export type InitialState = {
 	posts: Post[];
+	filteredPosts: Post[];
 	loading: boolean;
 };
 
