@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 import { useEffect } from "react";
 
+import PostsTable from "./components/PostsTable";
 import { getAllPosts } from "./redux/posts";
 
 function App() {
@@ -13,11 +14,10 @@ function App() {
 	}, [dispatch]);
 
 	return (
-		<>
-			<h1 className="text-3xl font-bold underline">react-rtk-table-search-sort-filter-pagination</h1>
-			<h2>{posts.length}</h2>
+		<main>
+			<PostsTable posts={posts} />
 			{loading && <h2>Loading...</h2>}
-		</>
+		</main>
 	);
 }
 
