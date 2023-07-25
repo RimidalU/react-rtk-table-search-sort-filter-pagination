@@ -7,6 +7,7 @@ export type Post = {
 
 export type InitialState = {
 	posts: Post[];
+	loading: boolean;
 };
 
 export type PostsResponse = Post[];

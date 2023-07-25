@@ -4,15 +4,19 @@ import { InitialState } from "./../types";
 
 const initialState: InitialState = {
 	posts: [],
+	loading: false,
 };
 
 const postsSlice = createSlice({
 	name: "posts",
 	initialState,
 	reducers: {
-		getAllPosts: () => {},
+		getAllPosts: (state) => {
+			state.loading = true;
+		},
 		setAllPosts: (state, { payload }) => {
 			state.posts.push(...payload);
+			state.loading = false;
 		},
 	},
 });

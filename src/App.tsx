@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { getAllPosts } from "./redux/posts";
 
 function App() {
-	const posts = useSelector((store: RootState) => store.posts.posts);
+	const { posts, loading } = useSelector((store: RootState) => store.posts);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -16,6 +16,7 @@ function App() {
 		<>
 			<h1 className="text-3xl font-bold underline">react-rtk-table-search-sort-filter-pagination</h1>
 			<h2>{posts.length}</h2>
+			{loading && <h2>Loading...</h2>}
 		</>
 	);
 }
