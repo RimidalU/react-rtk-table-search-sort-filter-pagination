@@ -8,3 +8,5 @@ export type Post = {
 export type InitialState = {
 	posts: Post[];
 };
+
+export type PostsResponse = Post[];

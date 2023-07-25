@@ -1,8 +1,16 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./redux/store";
+import { useEffect } from "react";
+
+import { getAllPosts } from "./redux/posts";
 
 function App() {
 	const posts = useSelector((store: RootState) => store.posts.posts);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getAllPosts());
+	}, [dispatch]);
 
 	return (
 		<>
