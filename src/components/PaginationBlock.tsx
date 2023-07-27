@@ -12,14 +12,14 @@ const PaginationBlock = () => {
 
 	const getPaginationLinks = Array.from({ length: pageCount }, (_, index) => {
 		return (
-			<a href="#" key={index}>
+			<button key={index}>
 				<li
 					className={`${currentPage === index + 1 && "text-green-500"}`}
 					onClick={() => setCurrentPage(index + 1)}
 				>
 					{index + 1}
 				</li>
-			</a>
+			</button>
 		);
 	});
 

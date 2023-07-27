@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./redux/store";
 import { useEffect, useState } from "react";
+import { RootState } from "./redux/store";
 
-import PostsTable from "./components/PostsTable";
 import { getAllPosts, searchPosts } from "./redux/posts";
 import PaginationBlock from "./components/PaginationBlock";
+import PostsTable from "./components/PostsTable";
 
 function App() {
 	const [searchText, setSearchText] = useState("");
 
-	const { filteredPosts, loading, totalCount } = useSelector((store: RootState) => store.posts);
+	const { displayedPosts, loading, totalCount } = useSelector((store: RootState) => store.posts);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -33,7 +33,7 @@ function App() {
 			/>
 			<PaginationBlock />
 			<h2>{totalCount}</h2>
-			<PostsTable posts={filteredPosts} />
+			<PostsTable posts={displayedPosts} />
 			{loading && <h2>Loading...</h2>}
 		</main>
 	);

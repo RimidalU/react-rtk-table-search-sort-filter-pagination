@@ -16,6 +16,7 @@ export type InitialState = {
 		body: SortType;
 	};
 	filteredPosts: Post[];
+	displayedPosts: Post[];
 	totalCount: number;
 	perPage: number;
 	currentPage: number;
