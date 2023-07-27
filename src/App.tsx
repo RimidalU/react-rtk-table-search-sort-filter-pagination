@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 
 import PostsTable from "./components/PostsTable";
 import { getAllPosts, searchPosts } from "./redux/posts";
+import PaginationBlock from "./components/PaginationBlock";
 
 function App() {
 	const [searchText, setSearchText] = useState("");
 
-	const { filteredPosts, loading } = useSelector((store: RootState) => store.posts);
+	const { filteredPosts, loading, totalCount } = useSelector((store: RootState) => store.posts);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -30,6 +31,8 @@ function App() {
 				value={searchText}
 				onChange={(e) => handleSearch(e)}
 			/>
+			<PaginationBlock />
+			<h2>{totalCount}</h2>
 			<PostsTable posts={filteredPosts} />
 			{loading && <h2>Loading...</h2>}
 		</main>

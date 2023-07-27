@@ -11,6 +11,9 @@ const initialState: InitialState = {
 		body: "asc",
 	},
 	filteredPosts: [],
+	totalCount: 0,
+	perPage: 10,
+	currentPage: 1,
 	loading: false,
 };
 
@@ -24,6 +27,7 @@ const postsSlice = createSlice({
 		setAllPosts: (state, { payload }) => {
 			state.posts = payload;
 			state.filteredPosts = payload;
+			state.totalCount = state.filteredPosts.length;
 			state.loading = false;
 		},
 		searchPosts: (state, { payload }) => {
@@ -37,6 +41,7 @@ const postsSlice = createSlice({
 				);
 			});
 			state.filteredPosts = filteredPosts;
+			state.totalCount = state.filteredPosts.length;
 		},
 		sortAsc: (state, { payload }) => {
 			const field: keyof Post = payload.toLowerCase();
@@ -66,9 +71,14 @@ const postsSlice = createSlice({
 			state.fields[field] = "desc";
 			state.filteredPosts = sortAsc;
 		},
+		setPageNumber: (state, { payload }) => {
+			const page: number = payload;
+			state.currentPage = page;
+		},
 	},
 });
 
-export const { getAllPosts, setAllPosts, searchPosts, sortAsc, sortDesc } = postsSlice.actions;
+export const { getAllPosts, setAllPosts, searchPosts, sortAsc, sortDesc, setPageNumber } =
+	postsSlice.actions;
 
 export default postsSlice.reducer;
