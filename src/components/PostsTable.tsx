@@ -1,25 +1,35 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import { sortAsc, sortDesc } from "../redux/posts";
+import { RootState } from "../redux/store";
 import { Post } from "../types";
-import { sortAsc } from "../redux/posts";
 
 type Props = {
 	posts: Post[];
 };
 
 const PostsTable = ({ posts }: Props) => {
+	const { fields } = useSelector((store: RootState) => store.posts);
+
 	const dispatch = useDispatch();
 
-	const handleSortAsc = (field: keyof Post) => {
-		dispatch(sortAsc(field));
+	const handleSort = (field: keyof Post) => {
+		const sortType = fields[field];
+		if (sortType === "desc") {
+			dispatch(sortAsc(field));
+		}
+		if (sortType === "asc") {
+			dispatch(sortDesc(field));
+		}
 	};
 
 	return (
 		<table>
 			<thead>
 				<tr>
-					<th onClick={() => handleSortAsc("id")}>ID</th>
-					<th onClick={() => handleSortAsc("title")}>Заголовок</th>
-					<th onClick={() => handleSortAsc("body")}>Описание</th>
+					<th onClick={() => handleSort("id")}>ID</th>
+					<th onClick={() => handleSort("title")}>Заголовок</th>
+					<th onClick={() => handleSort("body")}>Описание</th>
 				</tr>
 			</thead>
 			<tbody>
