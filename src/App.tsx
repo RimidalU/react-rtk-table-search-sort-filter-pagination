@@ -31,10 +31,9 @@ function App() {
 				value={searchText}
 				onChange={(e) => handleSearch(e)}
 			/>
-			<PaginationBlock />
-			<h2>{totalCount}</h2>
 			<PostsTable posts={displayedPosts} />
 			{loading && <h2>Loading...</h2>}
+			<PaginationBlock />
 		</main>
 	);
 }

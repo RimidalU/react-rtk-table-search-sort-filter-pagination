@@ -30,6 +30,7 @@ const postsSlice = createSlice({
 			state.filteredPosts = payload;
 			state.displayedPosts = payload.slice(0, state.perPage);
 			state.totalCount = state.filteredPosts.length;
+			document.location = document.location.pathname + `#/page/1`;
 			state.loading = false;
 		},
 		searchPosts: (state, { payload }) => {
@@ -45,6 +46,8 @@ const postsSlice = createSlice({
 			state.filteredPosts = filteredPosts;
 			state.displayedPosts = filteredPosts.slice(0, state.perPage);
 			state.totalCount = state.filteredPosts.length;
+			state.currentPage = 1;
+			document.location = document.location.pathname + `#/page/1`;
 		},
 		sortAsc: (state, { payload }) => {
 			const field: keyof Post = payload.toLowerCase();
@@ -79,8 +82,7 @@ const postsSlice = createSlice({
 		setPageNumber: (state, { payload }) => {
 			const page: number = payload;
 			const displayedPosts = state.filteredPosts.slice(10 * (page - 1), state.perPage + 10 * (page - 1));
-			console.log(displayedPosts);
-
+			document.location = document.location.pathname + `#/page/${page}`;
 			state.currentPage = page;
 			state.displayedPosts = displayedPosts;
 		},
