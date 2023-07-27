@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { InitialState } from "./../types";
+import { InitialState, Post } from "./../types";
 
 const initialState: InitialState = {
 	posts: [],
@@ -32,9 +32,22 @@ const postsSlice = createSlice({
 			});
 			state.filteredPosts = filteredPosts;
 		},
+		sortAsc: (state, { payload }) => {
+			const field: keyof Post = payload.toLowerCase();
+			const sortAsc = state.filteredPosts?.sort((a, b) => {
+				if (a[field] > b[field]) {
+					return 1;
+				}
+				if (a[field] < b[field]) {
+					return -1;
+				}
+				return 0;
+			});
+			state.filteredPosts = sortAsc;
+		},
 	},
 });
 
-export const { getAllPosts, setAllPosts, searchPosts } = postsSlice.actions;
+export const { getAllPosts, setAllPosts, searchPosts, sortAsc } = postsSlice.actions;
 
 export default postsSlice.reducer;

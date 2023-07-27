@@ -1,18 +1,25 @@
+import { useDispatch } from "react-redux";
 import { Post } from "../types";
+import { sortAsc } from "../redux/posts";
 
 type Props = {
 	posts: Post[];
 };
 
 const PostsTable = ({ posts }: Props) => {
-	posts;
+	const dispatch = useDispatch();
+
+	const handleSortAsc = (field: keyof Post) => {
+		dispatch(sortAsc(field));
+	};
+
 	return (
 		<table>
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>Заголовок</th>
-					<th>Описание</th>
+					<th onClick={() => handleSortAsc("id")}>ID</th>
+					<th onClick={() => handleSortAsc("title")}>Заголовок</th>
+					<th onClick={() => handleSortAsc("body")}>Описание</th>
 				</tr>
 			</thead>
 			<tbody>
