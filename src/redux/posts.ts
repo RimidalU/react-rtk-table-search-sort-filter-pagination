@@ -60,8 +60,13 @@ const postsSlice = createSlice({
 				}
 				return 0;
 			});
+
+			const keys = Object.keys(state.fields) as Array<keyof InitialState["fields"]>;
+
+			keys.forEach((key) => {
+				state.fields[key] = "asc";
+			});
 			state.fields[field] = "asc";
-			state.filteredPosts = sortAsc;
 			state.displayedPosts = sortAsc.slice(0, state.perPage);
 		},
 		sortDesc: (state, { payload }) => {
@@ -75,8 +80,13 @@ const postsSlice = createSlice({
 				}
 				return 0;
 			});
-			state.fields[field] = "desc";
-			state.filteredPosts = sortDesc;
+
+			const keys = Object.keys(state.fields) as Array<keyof InitialState["fields"]>;
+
+			keys.forEach((key) => {
+				key === field ? (state.fields[key] = "desc") : (state.fields[key] = "asc");
+			});
+
 			state.displayedPosts = sortDesc.slice(0, state.perPage);
 		},
 		setPageNumber: (state, { payload }) => {

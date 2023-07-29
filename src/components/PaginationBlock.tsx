@@ -14,7 +14,7 @@ const PaginationBlock = () => {
 		return (
 			<button key={index}>
 				<li
-					className={`${currentPage === index + 1 && "text-green-500"}`}
+					className={`${currentPage === index + 1 && "text-green-500"} `}
 					onClick={() => setCurrentPage(index + 1)}
 				>
 					{index + 1}
@@ -28,13 +28,13 @@ const PaginationBlock = () => {
 	};
 
 	return (
-		<section className="flex gap-2">
+		<section className=" w-full flex justify-between px-6 absolute bottom-0">
 			<button disabled={currentPage <= 1 && true} onClick={() => setCurrentPage(currentPage - 1)}>
-				Prev
+				Назад
 			</button>
-			<ul className="flex gap-1">{getPaginationLinks}</ul>
+			<ul className="flex gap-4">{getPaginationLinks}</ul>
 			<button disabled={currentPage >= pageCount && true} onClick={() => setCurrentPage(currentPage + 1)}>
-				Next
+				Далее
 			</button>
 		</section>
 	);

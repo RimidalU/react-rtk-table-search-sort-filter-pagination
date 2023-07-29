@@ -1,3 +1,42 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+	font-family: "Roboto", sans-serif;
+	font-size: 13px;
+	@apply text-[#474955] font-medium;
+}
+
+body {
+	@apply max-w-[1920px] h-screen my-0 mx-auto py-0 px-16 flex flex-col justify-between;
+}
+
+main {
+	@apply max-w-full h-screen overflow-y-auto my-16;
+}
+
+input {
+	@apply bg-[#5A5C66] text-[#B2B7BF] h-16 w-full pl-8;
+}
+
+th {
+	@apply bg-[#474955] text-[#FFFFFF] h-16 font-semibold gap-x-8 items-center justify-center;
+}
+
+td {
+	@apply px-2 py-3 border;
+}
+
+button {
+	@apply text-3xl hover:text-[#7EBC3C] disabled:text-[#B2B7BF];
+}
+
+li {
+	@apply italic font-bold text-xl hover:text-[#7EBC3C];
+}
+
+.sortPic {
+	@apply w-4 h-4 left-16 top-0.5 transform;
+}
