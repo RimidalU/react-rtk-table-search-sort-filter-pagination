@@ -28,11 +28,11 @@ const PaginationBlock = () => {
 	};
 
 	return (
-		<section className=" w-full flex justify-between px-6 absolute bottom-0">
+		<section className=" w-full flex justify-between px-3 sm:px-6 absolute bottom-0">
 			<button disabled={currentPage <= 1 && true} onClick={() => setCurrentPage(currentPage - 1)}>
 				Назад
 			</button>
-			<ul className="flex gap-4">{getPaginationLinks}</ul>
+			<ul className="flex gap-2 sm:gap-4">{getPaginationLinks}</ul>
 			<button disabled={currentPage >= pageCount && true} onClick={() => setCurrentPage(currentPage + 1)}>
 				Далее
 			</button>

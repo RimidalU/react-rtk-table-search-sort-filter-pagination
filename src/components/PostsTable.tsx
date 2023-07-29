@@ -32,7 +32,7 @@ const PostsTable = ({ posts }: Props) => {
 					<th className="px-6" onClick={() => handleSort("id")}>
 						<button
 							type="button"
-							className="inline-flex items-center font-semibold gap-x-8"
+							className="inline-flex items-center font-semibold gap-x-2 sm:gap-x-8 p-1"
 							aria-expanded="false"
 						>
 							<span className="text-inherit relative">ID</span>
@@ -46,7 +46,7 @@ const PostsTable = ({ posts }: Props) => {
 					<th onClick={() => handleSort("title")}>
 						<button
 							type="button"
-							className="inline-flex items-center h-16 font-semibold gap-x-8"
+							className="inline-flex items-center h-16 font-semibold gap-x-2 sm:gap-x-8 p-1"
 							aria-expanded="false"
 						>
 							<span className="text-inherit relative">Заголовок</span>
@@ -60,7 +60,7 @@ const PostsTable = ({ posts }: Props) => {
 					<th onClick={() => handleSort("body")}>
 						<button
 							type="button"
-							className="inline-flex items-center h-16 font-semibold gap-x-8"
+							className="inline-flex items-center h-16 font-semibold gap-x-2 sm:gap-x-8 p-1"
 							aria-expanded="false"
 						>
 							<span className="text-inherit relative">Описание</span>
